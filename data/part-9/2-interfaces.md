@@ -440,7 +440,7 @@ Type conversion succeeds if, and only if, the variable is of the type that it's 
 
 
 <!-- Rajapintojen todelliset hyödyt tulevat esille kun niitä käytetään metodille annettavan parametrin tyyppinä. Koska rajapintaa voidaan käyttää muuttujan tyyppinä, voidaan sitä käyttää metodikutsuissa parametrin tyyppinä. Esimerkiksi seuraavan luokan `Tulostin` metodi `tulosta` saa parametrina `Luettava`-tyyppisen muuttujan. -->
-The true benefits of interfaces are reaped when they are used as the type of parameter provided to a method. Since an interface can be used as a variable's type, it can also be used as a parameter type in method calls. For example, the `print` method in the `Printer` class of the class below gets a variable of type `read`.
+The true benefits of interfaces are reaped when they are used as the type of parameter provided to a method. Since an interface can be used as a variable's type, it can also be used as a parameter type in method calls. For example, the `print` method in the `Printer` class of the class below gets a variable of type `Readable`.
 
 <!-- ```java
 public class Tulostin {
@@ -459,7 +459,7 @@ public class Printer {
 
 
 <!-- Luokan `Tulostin` tarjoaman metodin `tulosta` huikeus piilee siinä, että sille voi antaa parametrina *minkä tahansa* `Luettava`-rajapinnan toteuttavan luokan ilmentymän. Kutsummepa metodia millä tahansa Luettava-luokan toteuttaneen luokan oliolla, metodi osaa toimia oikein. -->
-The value of the `print` method of the `printer` class lies in the fact that it can be given *any* class that implements the `Readable` interface as a parameter. Were we to call the method with any object instantiated from a class that inherits the Readable class, the method would function as desired.
+The value of the `print` method of the `printer` class lies in the fact that it can be given *any* class that implements the `Readable` interface as a parameter. Were we to call the method with any object instantiated from a class that inherits the Readable interface, the method would function as desired.
 
 
 <!-- ```java
@@ -664,7 +664,7 @@ System.out.println("Delegating the reading to Verna");
 
 ReadingList vernasList = new ReadingList();
 vernasList.add(jonisList);
-vernanLista.read();
+vernasList.read();
 
 System.out.println();
 System.out.println("Joni's to-read: " + jonisList.toRead());
@@ -675,7 +675,7 @@ System.out.println("Joni's to-read: " + jonisList.toRead());
 Joni's to-read: 1000
 Delegating the reading to Verna
 
-Joni's to-read:0
+Joni's to-read: 0
 
 </sample-output>
 
@@ -822,7 +822,7 @@ public class Box {
 When you need the weight of the box, for example when adding a new item to the box, you can just call the weight method.
 
 <!-- Metodi voisi palauttaa myös oliomuuttujan arvon. Harjoittelemme tässä kuitenkin tilannetta, jossa oliomuuttujaa ei tarvitse eksplisiittisesti ylläpitää vaan se voidaan tarpeentullen laskea. Seuraavan tehtävän jälkeen laatikossa olevaan oliomuuttujaan talletettu painotieto ei kuitenkaan välttämättä enää toimisi. Pohdi tehtävän tekemisen jälkeen miksi näin on. -->
-The method could also return the value of an object variable. However here we are practicing a situation, where we do not have to maintain an object variable explicitly, but can calculate its value as needed. After the next exercise storing the weight as an object variable would not necessary work anyway. After completing the exercise have a moment to think why that is.
+The method could also return the value of an object variable. However here we are practicing a situation, where we do not have to maintain an object variable explicitly, but can calculate its value as needed. After the next exercise, storing the weight as an object variable would not necessarily work anyway. After completing the exercise have a moment to think why that is.
 
 <h2>A Box is packable too!</h2>
 
@@ -946,8 +946,7 @@ public class Packer {
 
 <!-- Koska pakkaaja ei tunne rajapinnan `Talletettava` toteuttavia luokkia, on ohjelmaan mahdollisuus lisätä uusia luokkia jotka toteuttavat rajapinnan ilman tarvetta muuttaa pakkaajaa. Seuraavassa on luotu uusi Talletettava-rajapinnan toteuttava luokka, `Suklaalevy`. Tehdasta on muutettu siten, että se luo kirjojen ja cd-levyjen lisäksi suklaalevyjä. Luokka `Pakkaaja` toimii muuttamatta tehtaan laajennetun version kanssa. -->
 
-Because the packer does not know the classes that implement the interface `Packable`, one can add new classes that implement the interface without changing the packer. The next example creates a new class that implements the Packable interface `ChocolateBar`. The factory has been changed so that it creates chocolate bars in addition to books and CDs. The class `Packer` works without changes with the updated version of the factory.
-
+The packer does not know what classes implement the interface `Packable`, so one can add new classes that implement the interface without changing the packer. The next example creates a new class `ChocolateBar` that implements the `Packable` interface . The factory has been changed so that it creates chocolate bars in addition to books and CDs. The class `Packer` still works, with no update itself, with the updated version of the factory.
 
 <!-- ```java
 public class Suklaalevy implements Talletettava {
@@ -1288,7 +1287,7 @@ System.out.println(palautaKoko(nimet));
 ``` -->
 ```java
 Set<String> names = new HashSet<>();
-name.add("first");
+names.add("first");
 names.add("first");
 names.add("second");
 names.add("second");
